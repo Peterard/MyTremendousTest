@@ -14,23 +14,10 @@ hello <- function(myname = ""){
 URL <- paste("http://int.soccerway.com/",myname,"/matches/", sep="")
 WS <- read_html(URL)
 
-rawTableDataNewNewDate <- WS %>%
-  html_nodes(xpath = "//div[@id='page_team_1_block_team_matches_3']//table[contains(@class, 'matches')]//tbody//tr[contains(@class, 'match')]//td[contains(@class, 'full-date')]")
+rawTableData <- WS %>%
+  html_nodes(xpath = "//div[@id='page_team_1_block_team_matches_3']//table[contains(@class, 'matches')]")
 
-rawTableDataNewNewHomeTeam <- WS %>%
-  html_nodes(xpath = "//div[@id='page_team_1_block_team_matches_3']//table[contains(@class, 'matches')]//tbody//tr[contains(@class, 'match')]//td[contains(@class, 'team-a')]//a")
-
-rawTableDataNewNewScore <- WS %>%
-  html_nodes(xpath = "//div[@id='page_team_1_block_team_matches_3']//table[contains(@class, 'matches')]//tbody//tr[contains(@class, 'match')]//td[contains(@class, 'score')]//a")
-
-rawTableDataNewNewAwayTeam <- WS %>%
-  html_nodes(xpath = "//div[@id='page_team_1_block_team_matches_3']//table[contains(@class, 'matches')]//tbody//tr[contains(@class, 'match')]//td[contains(@class, 'team-b')]//a")
-
-rawTableDataNewNewAwayTeam <- WS %>%
-  html_nodes(xpath = "//div[@id='page_team_1_block_team_matches_3']//table[contains(@class, 'matches')]//tbody//tr[contains(@class, 'match')]//td[contains(@class, 'competition')]//a")
-
-
-scores <- gsub("\n","",gsub("  ","",html_text(rawTableDataNewNewScore)))
+scores <- html_table(rawTableData)
   
   list(
     message = scores
