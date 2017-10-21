@@ -11,7 +11,7 @@ hello <- function(myname = ""){
   
   library(rvest)
 
-URL <- paste("http://int.soccerway.com/",teamDF$TeamUrls[1],"/matches/", sep="")
+URL <- paste("http://int.soccerway.com/",myname,"/matches/", sep="")
 WS <- read_html(URL)
 
 rawTableDataNewNewDate <- WS %>%
