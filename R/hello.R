@@ -11,22 +11,28 @@ hello <- function(myname = ""){
   
   library(rvest)
 
-countryListURL <- vector();
-countryListNames <- vector();
-
-URL <- paste("http://int.soccerway.com/competitions/?ICID=TN_02", sep="")
+URL <- paste("http://int.soccerway.com/",teamDF$TeamUrls[1],"/matches/", sep="")
 WS <- read_html(URL)
 
-rawTableDataNewNew <- WS %>%
-  html_nodes(xpath = "//div[@id='page_competitions_1_block_competitions_index_club_domestic_4']//div[@class='row']//a")
+rawTableDataNewNewDate <- WS %>%
+  html_nodes(xpath = "//div[@id='page_team_1_block_team_matches_3']//table[contains(@class, 'matches')]//tbody//tr[contains(@class, 'match')]//td[contains(@class, 'full-date')]")
 
-countryListNames <- html_text(rawTableDataNewNew)
-countryListURL <- html_attr(rawTableDataNewNew, "href")
-  
-  randomCountry <- gsub("\n","",gsub("  ","",countryListNames[sample(1:(length(countryListNames)), 1)]))
+rawTableDataNewNewHomeTeam <- WS %>%
+  html_nodes(xpath = "//div[@id='page_team_1_block_team_matches_3']//table[contains(@class, 'matches')]//tbody//tr[contains(@class, 'match')]//td[contains(@class, 'team-a')]//a")
 
+rawTableDataNewNewScore <- WS %>%
+  html_nodes(xpath = "//div[@id='page_team_1_block_team_matches_3']//table[contains(@class, 'matches')]//tbody//tr[contains(@class, 'match')]//td[contains(@class, 'score')]//a")
+
+rawTableDataNewNewAwayTeam <- WS %>%
+  html_nodes(xpath = "//div[@id='page_team_1_block_team_matches_3']//table[contains(@class, 'matches')]//tbody//tr[contains(@class, 'match')]//td[contains(@class, 'team-b')]//a")
+
+rawTableDataNewNewAwayTeam <- WS %>%
+  html_nodes(xpath = "//div[@id='page_team_1_block_team_matches_3']//table[contains(@class, 'matches')]//tbody//tr[contains(@class, 'match')]//td[contains(@class, 'competition')]//a")
+
+
+scores <- gsub("\n","",gsub("  ","",html_text(rawTableDataNewNewScore)))
   
   list(
-    message = paste("hello ",myname," in ", randomCountry, "! This certainly is", R.Version()$version.string)
+    message = scores
   )
 }
