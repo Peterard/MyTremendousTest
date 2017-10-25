@@ -153,10 +153,12 @@
     
     <style>
       #output{
-        height: 80px;
+        min-height: 400px;
         width: 500px;
         border: 1px solid gray;
         padding: 3px;
+        overflow: auto;
+        white-space: pre-line;
       }
     </style>
     
@@ -169,6 +171,13 @@
     
     <button id="submitbutton" type="button">Submit to server!</button>
     
+    <select id="country-select">
+    </select>
+    <select id="league-select">
+    </select>
+    <select id="team-select">
+    </select>
+    
     <p id="output"></p>
   
     <br />
@@ -176,12 +185,7 @@
     <p>
      This is a basic JSON RPC call to OpenCPU. We use <tt>ocpu.rpc</tt> from the <tt>opencpu.js</tt> library to call the R function called <tt>hello</tt> included in this R package. 
     </p>
-    <select id="country-select">
-    </select>
-    <select id="league-select">
-    </select>
-    <select id="team-select">
-    </select>
+    
     
     <p>Have a look at the HTML source code! Some things to notice:</p>
     <ul>
