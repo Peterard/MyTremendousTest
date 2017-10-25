@@ -44,19 +44,41 @@
       
       $("#country-select").append(countryOptionsElement);
         
-      var leagueOptionsElement = "";
       
       $("#country-select").on("change", function(){
+        
+        var leagueOptionsElement = "";
+        
         var listOfLeagues = countryToLeagueJson[$("#country-select").val()];
         console.log(listOfLeagues);
         
         for (var i = 0; i < Object.keys(listOfLeagues).length; i++) { 
           var leagueUrl = Object.keys(listOfLeagues)[i];
-          var leagueName = listOfLeagues[leagueUrl];
+          var leagueName = Object.keys(listOfLeagues[leagueUrl])[0];
           leagueOptionsElement = leagueOptionsElement + '<option value="' + leagueUrl + '">' + leagueName + '</option>';
       }
         
         $("#league-select").append(leagueOptionsElement);
+        
+      });
+      
+      $("#league-select").on("change", function(){
+        
+        var teamOptionsElement = "";
+        
+        var listOfLeagues = countryToLeagueJson[$("#country-select").val()];
+        var leagueName = listOfLeagues[$("#league-select").val()];
+        var listOfTeams = leagueName[Object.keys(leagueName)[0]];
+        
+        console.log(listOfTeams);
+        
+        for (var i = 0; i < Object.keys(listOfTeams).length; i++) { 
+          var teamUrl = Object.keys(listOfTeams)[i];
+          var teamName = listOfTeams[teamUrl];
+          teamOptionsElement = teamOptionsElement + '<option value="' + teamUrl + '">' + teamName + '</option>';
+      }
+        
+        $("#team-select").append(teamOptionsElement);
         
       });
     });
