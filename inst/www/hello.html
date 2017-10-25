@@ -22,6 +22,7 @@
           myname : myname
         }, function(output){
           $("#output").text(output.message);
+          console.log(output);
         });
         
         //if R returns an error, alert the error message
@@ -31,7 +32,7 @@
         
         //after request complete, re-enable the button 
         req.always(function(){
-          $("#submitbutton").removeAttr("disabled")
+          $("#team-select").removeAttr("disabled")
         });
       });
       
