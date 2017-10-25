@@ -45,7 +45,7 @@
       $("#country-select").empty();
       $("#country-select").append(countryOptionsElement);
         
-       var leagueOptionsElement = "";
+      var leagueOptionsElement = "";
         
         var listOfLeagues = countryToLeagueJson[$("#country-select").val()];
         console.log(listOfLeagues);
@@ -54,8 +54,12 @@
           var leagueUrl = Object.keys(listOfLeagues)[i];
           var leagueName = Object.keys(listOfLeagues[leagueUrl])[0];
           leagueOptionsElement = leagueOptionsElement + '<option value="' + leagueUrl + '">' + leagueName + '</option>';
-          
-          var teamOptionsElement = "";
+      }
+        
+        $("#league-select").empty();
+        $("#league-select").append(leagueOptionsElement);
+       
+      var teamOptionsElement = "";
         
         var listOfLeagues = countryToLeagueJson[$("#country-select").val()];
         var leagueName = listOfLeagues[$("#league-select").val()];
@@ -67,6 +71,9 @@
           var teamUrl = Object.keys(listOfTeams)[i];
           var teamName = listOfTeams[teamUrl];
           teamOptionsElement = teamOptionsElement + '<option value="' + teamUrl + '">' + teamName + '</option>';
+      }
+        $("#team-select").empty();
+        $("#team-select").append(teamOptionsElement);
           
          
       
