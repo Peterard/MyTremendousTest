@@ -10,6 +10,22 @@
     <script>
     //init this script when the page has loaded
     $(document).ready(function(){
+      function unpackScores(outputMessage){
+        outputMessageArray = outputMessage[0];
+        
+        var scoreOutput = "";
+        
+        for(var i=0; i<outputMessageArray.length;i++){
+          var date = outputMessageArray[i]["Date"];
+          var division = outputMessageArray[i]["Competition"];
+          var homeTeam = outputMessageArray[i]["Outcome"];
+          var awayTeam = outputMessageArray[i]["Score/Time"];
+          var score = outputMessageArray[i]["Home team"];
+          scoreOutput = scoreOutput + date + " " + division + " : " + homeTeam + " " + score + " " + awayTeam + "\n";
+        }
+        return scoreOutput;
+      }
+      
       $("#team-select").on("change", function(){
         //disable the button to prevent multiple clicks
         $("#team-select").attr("disabled", "disabled");
@@ -21,8 +37,8 @@
         var req = ocpu.rpc("hello", {
           myname : myname
         }, function(output){
-          $("#output").text(output.message);
-          console.log(output);
+          $("#Output").text(unpackScores(output.message));
+          console.log(output.message);
         });
         
         //if R returns an error, alert the error message
