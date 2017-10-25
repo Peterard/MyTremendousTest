@@ -23,7 +23,7 @@
           var score = outputMessageArray[i]["Score"];
           var result = outputMessageArray[i]["Result"];
           
-          scoreOutput = scoreOutput +'<div class="'+result+'">'+ date + " " + division + " : " + homeTeam + " " + score + " " + awayTeam + "</div>";
+          scoreOutput = scoreOutput +'<div class="match-result '+result+'">'+ date + " " + division + " : " + homeTeam + " " + score + " " + awayTeam + "</div>";
           
           
         }
@@ -166,13 +166,16 @@
       }
       
       .result-win{
-      color:#97db97;
+      background-color:#97db97;
       }
       .result-loss{
-      color:#ff7272;
+      background-color:#ff7272;
       }
       .result-draw{
-      color:#d6d6d6;
+      background-color:#d6d6d6;
+      }
+      .match-result{
+      text-align:center;
       }
     </style>
     
