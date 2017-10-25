@@ -48,6 +48,7 @@
       
       $("#country-select").on("change", function(){
         var listOfLeagues = countryToLeagueJson[$("#country-select").val()];
+        console.log(listOfLeagues);
         
         for (var i = 0; i < Object.keys(listOfLeagues).length; i++) { 
           var leagueUrl = Object.keys(listOfLeagues)[i];
@@ -87,6 +88,8 @@
      This is a basic JSON RPC call to OpenCPU. We use <tt>ocpu.rpc</tt> from the <tt>opencpu.js</tt> library to call the R function called <tt>hello</tt> included in this R package. 
     </p>
     <select id="country-select">
+    </select>
+    <select id="league-select">
     </select>
     
     <p>Have a look at the HTML source code! Some things to notice:</p>
