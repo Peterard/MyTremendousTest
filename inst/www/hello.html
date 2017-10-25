@@ -18,10 +18,14 @@
         for(var i=0; i<outputMessageArray.length;i++){
           var date = outputMessageArray[i]["Date"];
           var division = outputMessageArray[i]["Competition"];
-          var homeTeam = outputMessageArray[i]["Outcome"];
-          var awayTeam = outputMessageArray[i]["Score/Time"];
-          var score = outputMessageArray[i]["Home team"];
-          scoreOutput = scoreOutput + date + " " + division + " : " + homeTeam + " " + score + " " + awayTeam + "\n";
+          var homeTeam = outputMessageArray[i]["HomeTeam"];
+          var awayTeam = outputMessageArray[i]["AwayTeam"];
+          var score = outputMessageArray[i]["Score"];
+          var result = outputMessageArray[i]["Result"];
+          
+          scoreOutput = scoreOutput +'<div class="'+result+'">'+ date + " " + division + " : " + homeTeam + " " + score + " " + awayTeam + "</div>";
+          
+          
         }
         return scoreOutput;
       }
@@ -37,7 +41,8 @@
         var req = ocpu.rpc("hello", {
           myname : myname
         }, function(output){
-          $("#output").text(unpackScores(output.message));
+          $("#output").empty();
+          $("#output").append(unpackScores(output.message));
           console.log(unpackScores(output.message));
           console.log(output.message);
         });
@@ -172,7 +177,7 @@
     <select id="team-select">
     </select>
     <br />
-    <p id="output"></p>
+    <div id="output"></div>
   
     <br />
     
