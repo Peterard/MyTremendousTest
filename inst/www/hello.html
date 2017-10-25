@@ -37,7 +37,7 @@
         var req = ocpu.rpc("hello", {
           myname : myname
         }, function(output){
-          $("#Output").text(unpackScores(output.message));
+          $("#output").text(unpackScores(output.message));
           console.log(output.message);
         });
         
