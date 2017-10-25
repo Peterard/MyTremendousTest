@@ -13,20 +13,32 @@
       function unpackScores(outputMessage){
         var outputMessageArray = outputMessage;
         
-        var scoreOutput = "";
+        var scoreOutput = "\
+        <table>\
+        <thead>\
+        <tr>\
+          <th>Date</th>\
+          <th>Competition</th>\
+          <th>Home Team</th>\
+          <th>Score</th>\
+          <th>Away Team</th>\
+        </tr>\
+        </thead>\
+        <tbody>";
         
         for(var i=0; i<outputMessageArray.length;i++){
           var date = outputMessageArray[i]["Date"];
-          var division = outputMessageArray[i]["Competition"];
+          var competition = outputMessageArray[i]["Competition"];
           var homeTeam = outputMessageArray[i]["HomeTeam"];
           var awayTeam = outputMessageArray[i]["AwayTeam"];
           var score = outputMessageArray[i]["Score"];
           var result = outputMessageArray[i]["Result"];
           
-          scoreOutput = scoreOutput +'<div class="match-result '+result+'">'+ date + " " + division + " : " + homeTeam + " " + score + " " + awayTeam + "</div>";
+          scoreOutput = scoreOutput +'<tr class="match-result '+result+'"><td class="date-cell">'+ date + '</td><td class="competition">' + competition + ' </td><td class="team home-team"> ' + homeTeam + ' </td><td class="score"> ' + score + ' </td><td class="team away-team"> ' + awayTeam + "</td></tr>";
           
           
         }
+        scoreOutput = scoreOutput + '</tbody></table>';
         return scoreOutput;
       }
       
