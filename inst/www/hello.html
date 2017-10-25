@@ -10,12 +10,12 @@
     <script>
     //init this script when the page has loaded
     $(document).ready(function(){
-      $("#submitbutton").on("click", function(){
+      $("#team-select").on("change", function(){
         //disable the button to prevent multiple clicks
-        $("#submitbutton").attr("disabled", "disabled");
+        $("#team-select").attr("disabled", "disabled");
         
         //read the value for 'myname'
-        var myname = $("#namefield").val();
+        var myname = $("#team-select").val();
         
         //perform the request
         var req = ocpu.rpc("hello", {
