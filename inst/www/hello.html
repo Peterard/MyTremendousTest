@@ -38,6 +38,7 @@
           myname : myname
         }, function(output){
           $("#output").text(unpackScores(output.message));
+          console.log(unpackScores(output.message));
           console.log(output.message);
         });
         
