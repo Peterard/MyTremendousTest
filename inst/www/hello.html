@@ -49,7 +49,6 @@
       var leagueOptionsElement = "";
         
         var listOfLeagues = countryToLeagueJson[$("#country-select").val()];
-        console.log(listOfLeagues);
         
         for (var i = 0; i < Object.keys(listOfLeagues).length; i++) { 
           var leagueUrl = Object.keys(listOfLeagues)[i];
@@ -66,8 +65,6 @@
         var leagueName = listOfLeagues[$("#league-select").val()];
         var listOfTeams = leagueName[Object.keys(leagueName)[0]];
         
-        console.log(listOfTeams);
-        
         for (var i = 0; i < Object.keys(listOfTeams).length; i++) { 
           var teamUrl = Object.keys(listOfTeams)[i];
           var teamName = listOfTeams[teamUrl];
@@ -83,7 +80,6 @@
         var leagueOptionsElement = "";
         
         var listOfLeagues = countryToLeagueJson[$("#country-select").val()];
-        console.log(listOfLeagues);
         
         for (var i = 0; i < Object.keys(listOfLeagues).length; i++) { 
           var leagueUrl = Object.keys(listOfLeagues)[i];
