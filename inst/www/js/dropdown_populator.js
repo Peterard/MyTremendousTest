@@ -38,7 +38,9 @@
           for (var i = 0; i < Object.keys(listOfTeams).length; i++) {
             var teamUrl = Object.keys(listOfTeams)[i];
             var teamName = listOfTeams[teamUrl];
-            teamOptionsElement = teamOptionsElement + '<option value="' + teamUrl + '">' + teamName + '</option>';
+                if(!teamOptionsElement.includes(teamUrl)){
+                        teamOptionsElement = teamOptionsElement + '<option value="' + teamUrl + '">' + teamName + '</option>';
+                }
         }
 
 
@@ -94,7 +96,9 @@
           for (var i = 0; i < Object.keys(listOfTeams).length; i++) {
             var teamUrl = Object.keys(listOfTeams)[i];
             var teamName = listOfTeams[teamUrl];
-            teamOptionsElement = teamOptionsElement + '<option value="' + teamUrl + '">' + teamName + '</option>';
+                if(!teamOptionsElement.includes(teamUrl)){
+                  teamOptionsElement = teamOptionsElement + '<option value="' + teamUrl + '">' + teamName + '</option>';
+                }
         }
 
 
@@ -133,7 +137,9 @@
           for (var i = 0; i < Object.keys(listOfTeams).length; i++) {
             var teamUrl = Object.keys(listOfTeams)[i];
             var teamName = listOfTeams[teamUrl];
-            teamOptionsElement = teamOptionsElement + '<option value="' + teamUrl + '">' + teamName + '</option>';
+                if(!teamOptionsElement.includes(teamUrl)){
+                    teamOptionsElement = teamOptionsElement + '<option value="' + teamUrl + '">' + teamName + '</option>';
+                }
         }
 
 
