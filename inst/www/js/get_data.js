@@ -10,6 +10,8 @@ function getGoalsScored(){
     console.log(score)
     var goalscored;
     var opponent;
+    console.log($(this).parents(".match-result").find(".home-team").text())
+    console.log($("#team-select").text())
     if($(this).parents(".match-result").find(".home-team").text() === $("#team-select").text()){
       goalscored = Number(score.replace("P", "").replace("E","").split("-")[0]);
       console.log(goalscored)
