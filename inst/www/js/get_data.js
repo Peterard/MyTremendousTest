@@ -13,6 +13,8 @@ function getGoalsScored(){
     homeTeam = homeTeam.slice(1, homeTeam.length - 1);
     awayTeam = awayTeam.slice(1, awayTeam.length - 1);
     console.log("Start")
+    console.log($("#team-select option:selected").text() === homeTeam)
+    console.log($("#team-select option:selected").text() === awayTeam)
     if($("#team-select option:selected").text() === homeTeam){
       goalscored = Number(score.replace("P", "").replace("E","").split("-")[0]);
       console.log(goalscored)
