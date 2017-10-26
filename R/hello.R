@@ -32,13 +32,19 @@ rawTableDataTable <- WS %>%
 rawTableDataCompetition <- WS %>%
   html_nodes(xpath = "//div[@id='page_team_1_block_team_matches_3']//table[contains(@class, 'matches')]//tbody//tr[contains(@class, 'match')]//td[contains(@class, 'competition')]//a")
 
-scores <- data.frame(Date = html_text(rawTableDataDate), 
-           Competition =  html_attr(rawTableDataCompetition, "title"),
-           HomeTeam = html_attr(rawTableDataHomeTeam, "title"),
-           Score = gsub("\n","",gsub(" ","",html_text(rawTableDataScore))),
-           AwayTeam = html_attr(rawTableDataAwayTeam, "title"),
-           Result = html_attr(rawTableDataScore, "class"),
-           Url = html_attr(rawTableDataScore, "href"))
+  Sys.setenv(TZ='Asia/Tokyo')
+  matchDates <- as.Date(html_text(rawTableDataDate), "%d/%m/%y")
+  today <- as.Date(Sys.Date(), "%d/%m/%y")
+  cutoff <- seq(today, length = 2, by = "-4 months")[2]
+  matchSelector <- matchDates >= cutoff
+  
+scores <- data.frame(Date = html_text(rawTableDataDate[matchSelector]), 
+           Competition =  html_attr(rawTableDataCompetition[matchSelector], "title"),
+           HomeTeam = html_attr(rawTableDataHomeTeam[matchSelector], "title"),
+           Score = gsub("\n","",gsub(" ","",html_text(rawTableDataScore[matchSelector]))),
+           AwayTeam = html_attr(rawTableDataAwayTeam[matchSelector], "title"),
+           Result = html_attr(rawTableDataScore[matchSelector], "class"),
+           Url = html_attr(rawTableDataScore[matchSelector], "href"))
   
   list(
     message = scores
