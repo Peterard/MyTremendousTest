@@ -36,7 +36,7 @@ rawTableDataCompetition <- WS %>%
   matchDates <- as.Date(html_text(rawTableDataDate), "%d/%m/%y")
   today <- as.Date(Sys.Date(), "%d/%m/%y")
   cutoff <- seq(today, length = 2, by = "-4 months")[2]
-  matchSelector <- matchDates >= cutoff
+  matchSelector <- matchDates >= cutoff & matchDates <= today
   
 scores <- data.frame(Date = html_text(rawTableDataDate[matchSelector]), 
            Competition =  html_attr(rawTableDataCompetition[matchSelector], "title"),
