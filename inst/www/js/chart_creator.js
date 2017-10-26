@@ -1,5 +1,6 @@
 function chartCreator(inputData){
 
+  $("#canvas-holder").empty();
   $("#canvas-holder").append('<canvas width=100 height=50 id="goal-chart"></canvas>');
 
   var canvasObject = document.getElementById('goal-chart');
