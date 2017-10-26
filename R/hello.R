@@ -36,7 +36,7 @@ rawTableDataCompetition <- WS %>%
   matchDates <- as.Date(html_text(rawTableDataDate), "%d/%m/%y")
   today <- as.Date(Sys.Date(), "%d/%m/%y")
   cutoff <- seq(today, length = 2, by = "-3 months")[2]
-  matchSelector <- matchDates >= cutoff & matchDates <= today
+  matchSelector <- matchDates >= cutoff & matchDates <= today & !unlist(lapply(gsub("\n","",gsub(" ","",html_text(rawTableDataScore[matchSelector]))), function(x) grepl(":", x)))
   
   
   if(sum(matchSelector) < 3){
