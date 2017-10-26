@@ -11,13 +11,13 @@ function getGoalsScored(){
     var goalscored;
     var opponent;
     console.log($(this).parents(".match-result").find(".home-team").text())
-    console.log($("#team-select").text())
-    if($(this).parents(".match-result").find(".home-team").text() === $("#team-select").text()){
+    console.log($("#team-select option:selected").text())
+    if($(this).parents(".match-result").find(".home-team").text() === $("#team-select option:selected").text()){
       goalscored = Number(score.replace("P", "").replace("E","").split("-")[0]);
       console.log(goalscored)
       opponent = $(this).parents(".match-result").find(".away-team").val();
       console.log(opponent)
-    }else if($(this).parents(".match-result").find(".away-team").text() === $("#team-select").text()){
+    }else if($(this).parents(".match-result").find(".away-team").text() === $("#team-select option:selected").text()){
       goalscored = Number(score.replace("P", "").replace("E","").split("-")[1]);
       console.log(goalscored)
       opponent = $(this).parents(".match-result").find(".home-team").val();
