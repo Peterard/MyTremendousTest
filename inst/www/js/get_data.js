@@ -18,14 +18,12 @@ function getGoalsScored(){
     console.log($("#team-select option:selected").text() === homeTeam)
     if($("#team-select option:selected").text() == homeTeam){
       goalscored = Number(score.replace("P", "").replace("E","").split("-")[0]);
-      console.log(goalscored)
-      opponent = $(this).parents(".match-result").find(".away-team").val();
-      console.log(opponent)
+      opponent = awayTeam;
     }else if($("#team-select option:selected").text() == awayTeam){
       goalscored = Number(score.replace("P", "").replace("E","").split("-")[1]);
-      console.log(goalscored)
-      opponent = $(this).parents(".match-result").find(".home-team").val();
-      console.log(opponent)
+      console.log(score)
+      console.log(score.replace("P", "").replace("E","").split("-")[1])
+      opponent = homeTeam;
     }
     var arrayCounter = goalArray.length;
     goalArray[arrayCounter] = goalscored;
