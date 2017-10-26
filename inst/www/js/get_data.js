@@ -10,14 +10,16 @@ function getGoalsScored(){
     console.log(score)
     var goalscored;
     var opponent;
-    console.log($(this).parents(".match-result").find(".home-team").text())
-    console.log($("#team-select option:selected").text())
-    if($(this).parents(".match-result").find(".home-team").text() === $("#team-select option:selected").text()){
+    console.log($(this).parents(".match-result").find(".home-team").text().replace("  ",""))
+    console.log($("#team-select option:selected").text() == $(this).parents(".match-result").find(".home-team").text().replace("  ",""))
+    var homeTeam = $(this).parents(".match-result").find(".home-team").text().replace("  ","");
+    var awayTeam = $(this).parents(".match-result").find(".away-team").text().replace("  ","");
+    if(homeTeam === $("#team-select option:selected").text()){
       goalscored = Number(score.replace("P", "").replace("E","").split("-")[0]);
       console.log(goalscored)
       opponent = $(this).parents(".match-result").find(".away-team").val();
       console.log(opponent)
-    }else if($(this).parents(".match-result").find(".away-team").text() === $("#team-select option:selected").text()){
+    }else if(awayTeam === $("#team-select option:selected").text()){
       goalscored = Number(score.replace("P", "").replace("E","").split("-")[1]);
       console.log(goalscored)
       opponent = $(this).parents(".match-result").find(".home-team").val();
