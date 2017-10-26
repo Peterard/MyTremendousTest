@@ -1,60 +1,87 @@
-function chartCreator(){
+function chartCreator(inputData){
 
-  $("#canvas-holder").append('<canvas id="goal-chart"></canvas>');
+  $("#canvas-holder").append('<canvas width=100 height=50 id="goal-chart"></canvas>');
 
-  var labelsarr = ["Jan 15", "Feb 15", "Mar 15", "Apr 15", "May 15", "Jun 15", "Jul 15", "Aug 15", "Sep 15", "Oct 15", "Nov 15", "Dec 15"];
-var ctx = document.getElementById('goal-chart').getContext('2d');
-var chart = new Chart(ctx, {
-   type: 'bar',
-   data: {
-      labels: ['Jan', 'Feb', 'Mar'], //labelsarr,
-      datasets: [{
-         type: 'line',
-         fill: false,
-         label: 'Metric 1',
-         backgroundColor: 'rgba(255,0,0,1)',
-         borderColor: 'rgba(255,0,0,1)',
-         data: [3, 2, 4], //val1
-      }, {
-         label: 'Metric 2',
-         backgroundColor: 'rgba(0, 129, 214, 0.8)',
-         data: [50, 30, 40], //val2
-      }]
-   },
-   options: {
-      tooltips: {
-         callbacks: {
-            label: function(t, d) {
-               if (t.datasetIndex === 0) {
-                  var xLabel = d.datasets[t.datasetIndex].label;
-                  var yLabel = t.yLabel;
-                  return xLabel + ': ' + yLabel;
-               } else {
-                  var xLabel = d.datasets[t.datasetIndex].label;
-                  var yLabel = t.yLabel >= 1000 ? '$' + t.yLabel.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") : '$' + t.yLabel;
-                  return xLabel + ': ' + yLabel;
-               }
-            }
-         }
-      },
-      legend: {
-         display: false,
-         position: 'top',
-      },
-      scales: {
-         yAxes: [{
-            ticks: {
-               beginAtZero: true,
-               callback: function(value, index, values) {
-                  if (parseInt(value) >= 1000) {
-                     return '$' + value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-                  } else {
-                     return '$' + value;
-                  }
-               }
-            }
-         }]
+  var canvasObject = document.getElementById('goal-chart');
+
+  canvasObject.width  = 200;
+  canvasObject.height = 100;
+
+  var ctx = document.getElementById('goal-chart').getContext('2d');
+
+  var data = {
+  labels: inputData.labels,
+  datasets: [
+      {
+          label: "My First dataset",
+          fill: false,
+          lineTension: 0.1,
+          backgroundColor: "rgba(75,192,192,0.4)",
+          borderColor: "rgba(75,192,192,1)",
+          borderCapStyle: 'butt',
+          borderDash: [],
+          borderDashOffset: 0.0,
+          borderJoinStyle: 'miter',
+          pointBorderColor: "rgba(75,192,192,1)",
+          pointBackgroundColor: "#fff",
+          pointBorderWidth: 1,
+          pointHoverRadius: 5,
+          pointHoverBackgroundColor: "rgba(75,192,192,1)",
+          pointHoverBorderColor: "rgba(220,220,220,1)",
+          pointHoverBorderWidth: 2,
+          pointRadius: 1,
+          pointHitRadius: 10,
+          data: inputData.data,
+          spanGaps: false,
       }
-   }
+  ]
+};
+
+
+
+var options = {
+      responsive: true,
+      title: {
+          display: false,
+          position: "top",
+          text: 'anything',
+          fontSize: 18,
+          fontColor: "#111"
+      },
+      tooltips: {
+              enabled: true,
+              mode: 'single',
+              callbacks: {
+                  label: function(tooltipItems, data) {
+                     var multistringText = [tooltipItems.yLabel];
+                         multistringText.push('Another Item');
+                         multistringText.push(tooltipItems.index+1);
+                         multistringText.push('One more Item');
+                      return multistringText;
+                  }
+              }
+          },
+      legend: {
+          display: false,
+          position: "bottom",
+          labels: {
+              fontColor: "#333",
+              fontSize: 16
+          }
+      },
+      scales:{
+          yAxes:[{
+              ticks:{
+                  min:0
+
+              }
+          }]
+
+      }
+  };
+var myLineChart = new Chart(ctx, {
+  type: 'line',
+  data: data,
+  options: options
 });
 }
