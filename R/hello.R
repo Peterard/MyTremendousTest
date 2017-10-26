@@ -35,8 +35,18 @@ rawTableDataCompetition <- WS %>%
   Sys.setenv(TZ='Asia/Tokyo')
   matchDates <- as.Date(html_text(rawTableDataDate), "%d/%m/%y")
   today <- as.Date(Sys.Date(), "%d/%m/%y")
-  cutoff <- seq(today, length = 2, by = "-4 months")[2]
+  cutoff <- seq(today, length = 2, by = "-3 months")[2]
   matchSelector <- matchDates >= cutoff & matchDates <= today
+  
+  
+  if(sum(matchSelector) < 3){
+    numberOfMonths <- 4
+    while (sum(matchSelector) < 3 && numberOfMonths < 24){
+      cutoff <- seq(today, length = 2, by = paste("-",numberOfMonths," months", sep=""))[2]
+      matchSelector <- matchDates >= cutoff
+      numberOfMonths <- numberOfMonths + 1
+    }
+  }
   
 scores <- data.frame(Date = html_text(rawTableDataDate[matchSelector]), 
            Competition =  html_attr(rawTableDataCompetition[matchSelector], "title"),
