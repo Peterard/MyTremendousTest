@@ -21,7 +21,7 @@ function getGoalsScored(){
   });
 
   var goalsScored = {labels:opponentArray, data:goalArray};
-  console.log("goalsScored")
+  console.log("goalsScoredd")
   console.log(goalsScored)
 
   return goalsScored;
