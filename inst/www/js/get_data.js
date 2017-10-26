@@ -1,8 +1,8 @@
 function getGoalsScored(){
   $("#match-results-table").find(".score");
 
-  var goalArray= [];
-  var opponentArray= [];
+  var goalArray = [];
+  var opponentArray = [];
 
   $("td.score").each(function(){
     var score = $(this).text();
@@ -10,12 +10,16 @@ function getGoalsScored(){
     console.log(score)
     var goalscored;
     var opponent;
-    if($(this).parents(".match-result").find(".home-team").val() === $("#team-select").text()){
+    if($(this).parents(".match-result").find(".home-team").text() === $("#team-select").text()){
       goalscored = Number(score.replace("P", "").replace("E","").split("-")[0]);
+      console.log(goalscored)
       opponent = $(this).parents(".match-result").find(".away-team").val();
-    }else if($(this).parents(".match-result").find(".away-team").val() === $("#team-select").text()){
+      console.log(opponent)
+    }else if($(this).parents(".match-result").find(".away-team").text() === $("#team-select").text()){
       goalscored = Number(score.replace("P", "").replace("E","").split("-")[1]);
+      console.log(goalscored)
       opponent = $(this).parents(".match-result").find(".home-team").val();
+      console.log(opponent)
     }
     var arrayCounter = goalArray.length;
     goalArray[arrayCounter.length] = goalscored;
