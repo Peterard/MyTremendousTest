@@ -59,8 +59,6 @@
         }, function(output){
           $("#output").empty();
           $("#output").append(unpackScores(output.message));
-          console.log("getGoalsScored")
-          console.log(getGoalsScored())
           chartCreator(getGoalsScored());
         });
 
