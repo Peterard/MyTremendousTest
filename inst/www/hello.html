@@ -38,7 +38,7 @@
           var score = outputMessageArray[i]["Score"];
           var result = outputMessageArray[i]["Result"];
 
-          scoreOutput = scoreOutput +'<tr class="match-result '+result+'"><td class="date-cell" value="' + date + '">'+ date + '</td><td class="competition" value="' + competition + '">' + competition + ' </td><td class="team home-team" value="' + homeTeam + '"> ' + homeTeam + ' </td><td class="score" value="' + score + '"> ' + score + ' </td><td class="team away-team" value="' + awayTeam + '"> ' + awayTeam + "</td></tr>";
+          scoreOutput = scoreOutput +'<tr class="match-result '+result+'"><td class="cell date-cell" value="' + date + '">'+ date + '</td><td class="cell competition" value="' + competition + '">' + competition + ' </td><td class="cell team home-team" value="' + homeTeam + '"> ' + homeTeam + ' </td><td class="cell score" value="' + score + '"> ' + score + ' </td><td class="cell team away-team" value="' + awayTeam + '"> ' + awayTeam + "</td></tr>";
 
 
         }
@@ -86,6 +86,15 @@
         padding: 3px;
         overflow: auto;
         white-space: pre-line;
+      }
+
+      #match-results-table{
+        border-spacing: 0px;
+      }
+
+      .cell{
+        padding:3px;
+        margin:3px;
       }
 
       .result-win{
