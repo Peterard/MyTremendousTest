@@ -37,7 +37,7 @@
           var score = outputMessageArray[i]["Score"];
           var result = outputMessageArray[i]["Result"];
 
-          scoreOutput = scoreOutput +'<tr class="match-result '+result+'"><td class="date-cell">'+ date + '</td><td class="competition">' + competition + ' </td><td class="team home-team"> ' + homeTeam + ' </td><td class="score"> ' + score + ' </td><td class="team away-team"> ' + awayTeam + "</td></tr>";
+          scoreOutput = scoreOutput +'<tr class="match-result '+result+'"><td class="date-cell" val="' + date + '">'+ date + '</td><td class="competition" val="' + competition + '">' + competition + ' </td><td class="team home-team" val="' + homeTeam + '"> ' + homeTeam + ' </td><td class="score" val="' + score + '"> ' + score + ' </td><td class="team away-team" val="' + awayTeam + '"> ' + awayTeam + "</td></tr>";
 
 
         }
