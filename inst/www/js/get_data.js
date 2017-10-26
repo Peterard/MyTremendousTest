@@ -12,8 +12,8 @@ function getGoalsScored(){
     var opponent;
     var homeTeam = $(this).parents(".match-result").find(".home-team").text().replace("  ","");
     var awayTeam = $(this).parents(".match-result").find(".away-team").text().replace("  ","");
-    console.log(homeTeam.slice(1, homeTeam.length));
-    console.log($("#team-select option:selected").text());
+    console.log("'"+homeTeam.slice(1, homeTeam.length)+"'");
+    console.log("'"+$("#team-select option:selected").text()+"'");
     homeTeam = homeTeam.slice(1, homeTeam.length);
     awayTeam = awayTeam.slice(1, awayTeam.length);
     console.log($("#team-select option:selected").text() == homeTeam)
