@@ -59,8 +59,7 @@
         }, function(output){
           $("#output").empty();
           $("#output").append(unpackScores(output.message));
-          console.log(unpackScores(output.message));
-          console.log(output.message);
+          chartCreator(getGoalsScored());
         });
 
         //if R returns an error, alert the error message
@@ -73,11 +72,10 @@
           $("#team-select").removeAttr("disabled")
         });
       });
+
       populateDropdowns();
 
       var goalsScored = getGoalsScored();
-
-      chartCreator(goalsScored);
     });
     </script>
 
