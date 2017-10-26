@@ -6,16 +6,14 @@ function getGoalsScored(){
 
   $("td.score").each(function(){
     var score = $(this).text();
-    console.log("score")
-    console.log(score)
     var goalscored;
     var opponent;
     var homeTeam = $(this).parents(".match-result").find(".home-team").text().replace("  ","");
     var awayTeam = $(this).parents(".match-result").find(".away-team").text().replace("  ","");
-    console.log("'"+homeTeam.slice(1, homeTeam.length)+"'");
+    console.log("'"+homeTeam.slice(1,  homeTeam.length - 1)+"'");
     console.log("'"+$("#team-select option:selected").text()+"'");
-    homeTeam = homeTeam.slice(1, homeTeam.length);
-    awayTeam = awayTeam.slice(1, awayTeam.length);
+    homeTeam = homeTeam.slice(1, homeTeam.length - 1);
+    awayTeam = awayTeam.slice(1, homeTeam.length - 1);
     console.log($("#team-select option:selected").text() == homeTeam)
     if(homeTeam === $("#team-select option:selected").text()){
       goalscored = Number(score.replace("P", "").replace("E","").split("-")[0]);
