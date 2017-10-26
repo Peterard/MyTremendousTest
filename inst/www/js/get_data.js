@@ -6,6 +6,8 @@ function getGoalsScored(){
 
   $("td.score").each(function(){
     var score = $(this).val();
+    console.log("score")
+    console.log(score)
     var goalscored;
     var opponent;
     if($(this).parents(".match-result").find(".home-team").val() === $("#team-select").text()){
@@ -21,7 +23,7 @@ function getGoalsScored(){
   });
 
   var goalsScored = {labels:opponentArray, data:goalArray};
-  console.log("goalsScoredd")
+  console.log("goalsScored")
   console.log(goalsScored)
 
   return goalsScored;
