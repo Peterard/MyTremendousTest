@@ -59,8 +59,7 @@
         }, function(output){
           $("#output").empty();
           $("#output").append(unpackScores(output.message));
-          console.log("This is getting silly")
-          console.log($("td.score").val())
+          console.log("Updated")
           chartCreator(getGoalsScored());
         });
 
