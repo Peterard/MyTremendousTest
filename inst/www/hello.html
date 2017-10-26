@@ -10,14 +10,15 @@
     <script src="CountryToLeagueJson.js"></script>
     <script src="js/dropdown_populator.js"></script>
     <script src="js/chart_creator.js"></script>
+    <script src="js/get_data.js"></script>
     <script>
     //init this script when the page has loaded
     $(document).ready(function(){
       function unpackScores(outputMessage){
         var outputMessageArray = outputMessage;
 
-        var scoreOutput = "\
-        <table>\
+        var scoreOutput = '\
+        <table id="match-results-table">\
         <thead>\
         <tr>\
           <th>Date</th>\
@@ -27,7 +28,7 @@
           <th>Away Team</th>\
         </tr>\
         </thead>\
-        <tbody>";
+        <tbody>';
 
         for(var i=0; i<outputMessageArray.length;i++){
           var date = outputMessageArray[i]["Date"];
@@ -73,7 +74,10 @@
         });
       });
       populateDropdowns();
-      chartCreator();
+
+      var goalsScored = getGoalsScored();
+
+      chartCreator(goalsScored);
     });
     </script>
 
@@ -98,6 +102,11 @@
       }
       .match-result{
       text-align:center;
+      }
+
+      #canvas-holder{
+        width:30vw;
+        height:30vw;
       }
     </style>
 
