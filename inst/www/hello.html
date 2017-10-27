@@ -60,6 +60,19 @@
           $("#output").empty();
           $("#output").append(unpackScores(output.message));
           chartCreator(getGoalsScored());
+
+            $("#goals-scored").on("click", function(){
+              chartCreator(getGoalsScored());
+            });
+
+            $("#goals-conceded").on("click", function(){
+              chartCreator(getGoalsConceded());
+            });
+
+            $("#goals-difference").on("click", function(){
+              chartCreator(getGoalDifference());
+            });
+
         });
 
         //if R returns an error, alert the error message
@@ -111,6 +124,14 @@
       .match-result{
       text-align:center;
       }
+      .chart-button{
+        cursor: pointer;
+        border-radius:3px;
+        border-style:solid;
+        border-width:2px;
+        background-color:#3097ff;
+        display:inline-block;
+      }
 
       #canvas-holder{
         width:30vw;
@@ -128,12 +149,12 @@
     <select id="team-select">
     </select>
     <br />
-    <div id="output"></div>
-    <div id="goals-scored">Goals Scored</div>
-    <div id="goals-conceded">Goals Conceded</div>
-    <div id="goal-difference">Goal Difference</div>
-    <div id="goal-scored-per-comp">Avg. goals scored Per comp</div>
-    <div id="goal-conceded-per-comp">Avg. goals conceded Per comp</div>
+    <div class="chart-button" id="output"></div>
+    <div class="chart-button" id="goals-scored">Goals Scored</div>
+    <div class="chart-button" id="goals-conceded">Goals Conceded</div>
+    <div class="chart-button" id="goal-difference">Goal Difference</div>
+    <div class="chart-button" id="goal-scored-per-comp">Avg. goals scored Per comp</div>
+    <div class="chart-button" id="goal-conceded-per-comp">Avg. goals conceded Per comp</div>
     <br />
     <div id="canvas-holder"></div>
   </body>
