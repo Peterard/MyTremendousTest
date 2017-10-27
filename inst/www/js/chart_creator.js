@@ -86,3 +86,15 @@ var myLineChart = new Chart(ctx, {
   options: options
 });
 }
+
+$("#goals-scored").on("click", function(){
+  chartCreator(getGoalsScored());
+})
+
+$("#goals-conceded").on("click", function(){
+  chartCreator(getGoalsConceded());
+})
+
+$("#goals-difference").on("click", function(){
+  chartCreator(getGoalDifference());
+})
