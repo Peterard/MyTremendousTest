@@ -58,8 +58,8 @@ var options = {
                   label: function(tooltipItems, data) {
                     console.log(tooltipItems)
                     console.log(data)
-                     var multistringText = [tooltipItems.yLabel];
-                         multistringText.push(tooltipItems.index+1);
+                     var multistringText = [data.datasets[tooltipItems.datasetIndex]["competitions"][tooltipItems.index]];
+                         multistringText.push(data.datasets[tooltipItems.datasetIndex]["dates"][tooltipItems.index]);
                       return multistringText;
                   }
               }
