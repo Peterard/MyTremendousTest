@@ -12,6 +12,8 @@ function chartCreator(inputData){
 
   var data = {
   labels: inputData.labels,
+  dates: inputData.dates,
+  competitions: inputData.competitions,
   datasets: [
       {
           label: "My First dataset",
@@ -54,6 +56,8 @@ var options = {
               mode: 'single',
               callbacks: {
                   label: function(tooltipItems, data) {
+                    console.log(tooltipItems)
+                    console.log(data)
                      var multistringText = [tooltipItems.yLabel];
                          multistringText.push('Another Item');
                          multistringText.push(tooltipItems.index+1);
@@ -75,7 +79,7 @@ var options = {
               display:true,
               ticks:{
                   suggestedMin: 0,
-
+                  callback: function(value) {if (value % 1 === 0) {return value;}
               }
           }]
 
