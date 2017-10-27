@@ -12,8 +12,6 @@ function chartCreator(inputData){
 
   var data = {
   labels: inputData.labels,
-  dates: inputData.dates,
-  competitions: inputData.competitions,
   datasets: [
       {
           label: "My First dataset",
@@ -34,6 +32,8 @@ function chartCreator(inputData){
           pointHoverBorderWidth: 2,
           pointRadius: 1,
           pointHitRadius: 10,
+          dates: inputData.dates,
+          competitions: inputData.competitions,
           data: inputData.data,
           spanGaps: false,
       }
