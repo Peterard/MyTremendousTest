@@ -59,9 +59,7 @@ var options = {
                     console.log(tooltipItems)
                     console.log(data)
                      var multistringText = [tooltipItems.yLabel];
-                         multistringText.push('Another Item');
                          multistringText.push(tooltipItems.index+1);
-                         multistringText.push('One more Item');
                       return multistringText;
                   }
               }
@@ -79,7 +77,7 @@ var options = {
               display:true,
               ticks:{
                   suggestedMin: 0,
-                  callback: function(value) {if (value % 1 === 0) {return value;}
+                  callback: function(value) {if (value % 1 === 0) {return value;}},
               }
           }]
 
