@@ -1,12 +1,12 @@
 function chartCreator(inputData){
 
   $("#canvas-holder").empty();
-  $("#canvas-holder").append('<canvas width=100 height=50 id="goal-chart"></canvas>');
+  $("#canvas-holder").append('<canvas width=150 height=150 id="goal-chart"></canvas>');
 
   var canvasObject = document.getElementById('goal-chart');
 
-  canvasObject.width  = 200;
-  canvasObject.height = 100;
+  canvasObject.width  = 400;
+  canvasObject.height = 300;
 
   var ctx = document.getElementById('goal-chart').getContext('2d');
 
@@ -72,8 +72,9 @@ var options = {
       },
       scales:{
           yAxes:[{
+              display:true,
               ticks:{
-                  min:0
+                  suggestedMin: 0,
 
               }
           }]
